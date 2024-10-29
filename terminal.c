@@ -70,12 +70,14 @@ void TChangeSettings(const char * str)
 	fflush(stdout);
 }
 
+/* Changes background color based on RGB*/
 void TRGBBackground (size_t r, size_t g, size_t b)
 {
 	printf("\033[48;2;%zu;%zu;%zum", r,g,b);
 	fflush(stdout);
 }
 
+/* Changes foreground color based on rgb */
 void TRGBForeground (size_t r, size_t g, size_t b)
 {
   printf("\033[38;2;%zu;%zu;%zum", r,g,b);
@@ -138,20 +140,21 @@ void TCursorUpLines(int x)
 	fflush(stdout);
 }
 
-
+/* Clears screen*/
 void TClearScreen()
 {
 	TChangeSettings("\x1B[2J");
 	fflush(stdout);
 }
 
-
+/* Erases line */
 void TEraseLine()
 {
 	printf("\033[2K");
 	fflush(stdout);
 }
 
+/* Returns terminal size */
 void TGetTerminalSize(int * x, int * y)
 {
 	struct winsize size;
